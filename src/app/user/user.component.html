@@ -112,6 +112,9 @@
                                 </div>
                             </div>
 
+                            <p *ngIf="saveState === true" class="message success-text pull-right">Se han guardado los datos correctamente</p>
+                            <p *ngIf="saveState === false" class="message alert-text pull-right">Ha ocurrido un error, por verifique los datos</p>
+                            <br><br>
                             <button type="button" class="btn btn-info btn-fill pull-right" (click)="saveData()">Guardar</button>
                             <div class="clearfix"></div>
                         </form>

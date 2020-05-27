@@ -13,6 +13,7 @@ export class UserComponent implements OnInit {
   public user: any = {};
   public cities: Array<any> = [];
   public estadios: Array<any> = [];
+  private saveState: boolean;
 
   constructor(private route: ActivatedRoute, 
               private http: HttpClient) {
@@ -57,8 +58,9 @@ export class UserComponent implements OnInit {
     }else{
       actionUrl = `${this.url}user/create`;
     }
-    
+  
     this.http.post(actionUrl, data).subscribe((response: any) => {
-    });
+      this.saveState = true;
+    }, (error) => this.saveState = false);   
   }
 }

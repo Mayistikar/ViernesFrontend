@@ -12,6 +12,7 @@ export class DeviceComponent implements OnInit {
   private url: string;
   public deviceId: number;
   public device: any = {};
+  private saveState: boolean;
 
   constructor(private route: ActivatedRoute, 
               private http: HttpClient) {
@@ -51,8 +52,9 @@ export class DeviceComponent implements OnInit {
     }else{
       actionUrl = `${this.url}electro/create`;
     }
-    
+  
     this.http.post(actionUrl, data).subscribe((response: any) => {
-    });
+      this.saveState = true;
+    }, (error) => this.saveState = false);   
   }
 }

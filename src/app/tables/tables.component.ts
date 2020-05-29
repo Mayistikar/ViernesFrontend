@@ -18,7 +18,11 @@ export class TablesComponent implements OnInit {
     private url: string;
     private module: string;
     private UserData: TableData = {
-        headerRow: [ 'ID', 'Nombre', 'Identificador', 'Estado', 'Conexión'],
+        headerRow: [ 'ID', 'Usuario', 'Nombre', 'Cedula', 'Cumpleaños'],
+        dataRows: []
+    }
+    private PatientData: TableData = {
+        headerRow: [ 'ID', 'Usuario', 'Nombre', 'Cedula', 'Cumpleaños'],
         dataRows: []
     }
     private DeviceData: TableData = {
@@ -30,6 +34,8 @@ export class TablesComponent implements OnInit {
 
     constructor(private route: ActivatedRoute, 
                 private http: HttpClient) {
+                    const token = localStorage.getItem('token');
+                    if(!token) window.location.href = '/#/';
         this.url = environment.apiUrl;
         this.route.params.subscribe(params => {
             this.getData(params);
@@ -44,15 +50,22 @@ export class TablesComponent implements OnInit {
     }
 
     getData(params){
-        const module = params['module'] === 'users' ? 'user' : 'electro';
-        this.module = module === 'user' ? 'user' : 'device';
+        const module = (params['module'] === 'users') ? 'user-admin' : (params['module'] === 'patients') ? 'user' : 'electro';
+        this.module = module === 'user-admin' ? 'user-admin' : module === 'user' ? 'user' : 'device';
         this.http.get(`${this.url}${module}/all`).subscribe((response: any) => {
-            if(module==='user'){
+            if(module==='user-admin'){
                 this.UserData['dataRows'] = response.data.map((item: any) => {
-                    const newItem = [item.id, `${item.firstName} ${item.lastName}`, 'Identificador', 'Active', '19/05/2020'];
+                    console.log(item);
+                    const newItem = [item.id, item.user, `${item.firstName} ${item.lastName}`, item.document, this.formatDate(item.birthday)];
                     return newItem;
                 });
                 this.tableData = this.UserData;
+            }else if(module==='user'){
+                this.PatientData['dataRows'] = response.data.map((item: any) => {
+                    const newItem = [item.id, item.user, `${item.firstName} ${item.lastName}`, item.document, this.formatDate(item.birthday)];
+                    return newItem;
+                });
+                this.tableData = this.PatientData;
             }else{
                 this.DeviceData['dataRows'] = response.data.map((item: any) => {
                     const newItem = [item.id, item.name, item.identifier, 'Active', this.formatDate(item.register)];

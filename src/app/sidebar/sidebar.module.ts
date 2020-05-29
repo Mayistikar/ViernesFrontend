@@ -9,4 +9,9 @@ import { SidebarComponent } from './sidebar.component';
     exports: [ SidebarComponent ]
 })
 
-export class SidebarModule {}
+export class SidebarModule {
+    constructor(){
+        const token = localStorage.getItem('token');
+        if(!token) window.location.href = '/#/';
+    }
+}

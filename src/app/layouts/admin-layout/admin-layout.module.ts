@@ -9,11 +9,13 @@ import { NguiMapModule} from '@ngui/map';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 
 import { HomeComponent } from '../../home/home.component';
-import { UserComponent } from '../../user/user.component';
+import { UserAdminComponent } from '../../user/user.component';
+import { PatientComponent } from '../../patient/user.component';
 import { DeviceComponent } from '../../device/device.component';
 import { TablesComponent } from '../../tables/tables.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
+import { SalirComponent } from '../../salir/salir.component';
 
 
 @NgModule({
@@ -26,11 +28,13 @@ import { IconsComponent } from '../../icons/icons.component';
   ],
   declarations: [
     HomeComponent,
-    UserComponent,
+    UserAdminComponent,
+    PatientComponent,
     DeviceComponent,
     TablesComponent,
     TypographyComponent,
     IconsComponent,
+    SalirComponent,
   ]
 })
 

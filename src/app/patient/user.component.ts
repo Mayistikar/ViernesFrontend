@@ -4,21 +4,21 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 
 @Component({
-  selector: 'app-user-admin',
+  selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserAdminComponent implements OnInit {
+export class PatientComponent implements OnInit {
   private url: string;
   public userId: number;
-  public userAdmin: any = {};
+  public user: any = {};
   public cities: Array<any> = [];
   public estadios: Array<any> = [];
   private saveState: boolean;
 
   constructor(private route: ActivatedRoute, 
               private http: HttpClient) {
-                let token = localStorage.getItem('token');                
+                const token = localStorage.getItem('token');
                 if(!token) window.location.href = '/#/';
     this.url = environment.apiUrl;
     this.route.params.subscribe(params => {
@@ -41,22 +41,22 @@ export class UserAdminComponent implements OnInit {
   }
 
   getData(params){
-    this.http.get(`${this.url}user-admin/${this.userId}`).subscribe((response: any) => {
-      this.userAdmin = response.user;
-      this.userAdmin['birthday'] = this.formatDate(this.userAdmin.birthday)
+    this.http.get(`${this.url}user/${this.userId}`).subscribe((response: any) => {
+      this.user = response.user;
+      this.user['birthday'] = this.user.birthday.split('T')[0]
     }); 
   }
 
   saveData(){
     let actionUrl;
-    const data = {...this.userAdmin};
+    const data = {...this.user};
     if(this.userId){
       delete data['id'];
       delete data['user'];
       delete data['pass'];
-      actionUrl = `${this.url}user-admin/${this.userId}/update`;
+      actionUrl = `${this.url}user/${this.userId}/update`;
     }else{
-      actionUrl = `${this.url}user-admin/create`;
+      actionUrl = `${this.url}user/create`;
     }
   
     this.http.post(actionUrl, data).subscribe((response: any) => {

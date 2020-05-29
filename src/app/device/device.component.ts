@@ -17,6 +17,8 @@ export class DeviceComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, 
               private http: HttpClient) {
+                let token = localStorage.getItem("token");
+                if(!token) window.location.href = `/#/login`;
     this.url = environment.apiUrl;
     this.route.params.subscribe(params => {
       this.deviceId = params['id'];

@@ -56,9 +56,9 @@ export class UserComponent implements OnInit {
       delete data['id'];
       delete data['user'];
       delete data['pass'];
-      actionUrl = `${this.url}user-admin/${this.userId}/update`;
+      actionUrl = `${this.url}user/${this.userId}/update`;
     }else{
-      actionUrl = `${this.url}user-admin/create`;
+      actionUrl = `${this.url}user/create`;
     }
   
     this.http.post(actionUrl, data).subscribe((response: any) => {

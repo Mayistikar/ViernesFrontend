@@ -11,7 +11,7 @@ import { environment } from 'environments/environment';
 })
 export class HomeComponent implements OnInit {
   public emailChartType: ChartType;
-  public emailChartData: any;
+  public emailChartData: any = {};
   public emailChartLegendItems: LegendItem[];
   public hoursChartType: ChartType;
   public hoursChartData: any;
@@ -26,12 +26,11 @@ export class HomeComponent implements OnInit {
   private url: string;
 
   constructor(private http: HttpClient) {
-
     const token = localStorage.getItem('token');
     if(!token) window.location.href = '/#/';
 
     this.url = environment.apiUrl;
-    this.http.get(`${this.url}/logs/all-usages`).subscribe((response: any) => {
+    this.http.get(`${this.url}logs/all-usages`).subscribe((response: any) => {
       console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
       console.log(response);
       const { labels, series } = response.emailChartData;
@@ -40,7 +39,8 @@ export class HomeComponent implements OnInit {
       this.emailChartData.labels = labels; // , series };
       this.emailChartData.series = series;
       this.emailChartLegendItems = response.emailChartLegendItems;
-  
+      console.log(this.emailChartData)
+
     });
   }
 

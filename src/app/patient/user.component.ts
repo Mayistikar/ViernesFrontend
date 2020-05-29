@@ -41,7 +41,7 @@ export class PatientComponent implements OnInit {
   getData(params){
     this.http.get(`${this.url}user/${this.userId}`).subscribe((response: any) => {
       this.user = response.user;
-      this.user['birthday'] = this.formatDate(this.user.birthday)
+      this.user['birthday'] = this.user.birthday.split('T')[0]
     }); 
   }
 

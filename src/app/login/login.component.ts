@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.http.post(`${this.url}login`, data).subscribe((response: any) => {
       this.logged = true;
       console.log(response);
-      if(!response.error) window.location.href = `/#/user-admin`;
+      if(!response.error) window.location.href = `/#/table/users`;
     }, (error) => {
       // this.notification.showNotification('center', 'center');
       console.log('models');

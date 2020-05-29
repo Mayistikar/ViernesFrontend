@@ -6,22 +6,22 @@
                     <div class="content">
                         <form>
                             <div class="row">
-                                <div class="col-md-4" *ngIf="!userId">
+                                <div class="col-md-4" *ngIf="!patientId">
                                     <div class="form-group">
                                         <label>Usuario</label>
-                                        <input type="text" class="form-control" name="user" [(ngModel)]="user.user">
+                                        <input type="text" class="form-control" name="patient" [(ngModel)]="patient.patient">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Documento</label>
-                                        <input type="number" class="form-control" name="document" [(ngModel)]="user.document">
+                                        <input type="number" class="form-control" name="document" [(ngModel)]="patient.document">
                                     </div>
                                 </div>
-                                <div class="col-md-4" *ngIf="!userId">
+                                <div class="col-md-4" *ngIf="!patientId">
                                     <div class="form-group">
                                         <label>Contraseña</label>
-                                        <input type="password" class="form-control" name="pass" [(ngModel)]="user.pass">
+                                        <input type="password" class="form-control" name="pass" [(ngModel)]="patient.pass">
                                     </div>
                                 </div>
                             </div>
@@ -29,40 +29,40 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Nombres</label>
-                                        <input type="text" class="form-control" name="firstName" [(ngModel)]="user.firstName">
+                                        <input type="text" class="form-control" name="firstName" [(ngModel)]="patient.firstName">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Apellidos</label>
-                                        <input type="text" class="form-control" name="lastName" [(ngModel)]="user.lastName">
+                                        <input type="text" class="form-control" name="lastName" [(ngModel)]="patient.lastName">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Fecha de cumpleaños</label>
-                                        <input type="date" class="form-control" name="birthday" [(ngModel)]="user.birthday">
+                                        <input type="date" class="form-control" name="birthday" [(ngModel)]="patient.birthday">
                                     </div>
                                 </div>
                             </div>
-                            <!--
+
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Estatura</label>
-                                        <input type="number" class="form-control" name="height" [(ngModel)]="user.height">
+                                        <input type="number" class="form-control" name="height" [(ngModel)]="patient.height">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Peso</label>
-                                        <input type="number" class="form-control" name="weight" [(ngModel)]="user.weight">
+                                        <input type="number" class="form-control" name="weight" [(ngModel)]="patient.weight">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Estadio</label>
-                                        <select class="form-control" name="estadio" [(ngModel)]="user.estadio">
+                                        <select class="form-control" name="estadio" [(ngModel)]="patient.estadio">
                                             <option>Selecciona un estadio</option>
                                             <option *ngFor="let estadio of estadios" value="estadio">{{estadio}}</option>
                                         </select>
@@ -74,7 +74,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Diagnóstico</label>
-                                        <textarea rows="5" class="form-control" name="diagnosis" [(ngModel)]="user.diagnosis"></textarea>
+                                        <textarea rows="5" class="form-control" name="diagnosis" [(ngModel)]="patient.diagnosis"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -83,28 +83,28 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Dirección</label>
-                                        <input type="text" class="form-control" name="address" [(ngModel)]="user.address">
+                                        <input type="text" class="form-control" name="address" [(ngModel)]="patient.address">
                                     </div>
                                 </div>
                             </div>
-                            -->
+
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Correo electrónico</label>
-                                        <input type="email" class="form-control" name="email" [(ngModel)]="user.email">
+                                        <input type="email" class="form-control" name="email" [(ngModel)]="patient.email">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Teléfono</label>
-                                        <input type="tel" class="form-control" name="phone" [(ngModel)]="user.phone">
+                                        <input type="tel" class="form-control" name="phone" [(ngModel)]="patient.phone">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Ciudad</label>
-                                        <select class="form-control" name="city" [(ngModel)]="user.city">
+                                        <select class="form-control" name="city" [(ngModel)]="patient.city">
                                             <option>Selecciona una ciudad</option>
                                             <option *ngFor="let city of cities" value="city">{{city}}</option>
                                         </select>

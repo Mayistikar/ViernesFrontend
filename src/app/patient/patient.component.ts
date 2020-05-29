@@ -4,14 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-patient',
+  templateUrl: './patient.component.html',
+  styleUrls: ['./patient.component.css']
 })
-export class UserComponent implements OnInit {
+export class PatientComponent implements OnInit {
   private url: string;
-  public userId: number;
-  public user: any = {};
+  public patientId: number;
+  public patient: any = {};
   public cities: Array<any> = [];
   public estadios: Array<any> = [];
   private saveState: boolean;
@@ -20,8 +20,8 @@ export class UserComponent implements OnInit {
               private http: HttpClient) {
     this.url = environment.apiUrl;
     this.route.params.subscribe(params => {
-      this.userId = params['id'];
-      if(this.userId){
+      this.patientId = params['id'];
+      if(this.patientId){
         this.getData(params);
       }
     });
@@ -42,23 +42,22 @@ export class UserComponent implements OnInit {
   }
 
   getData(params){
-    this.http.get(`${this.url}user/${this.userId}`).subscribe((response: any) => {
-      this.user = response.user;
-      this.user['birthday'] = this.formatDate(this.user.birthday)
+    this.http.get(`${this.url}patient/${this.patientId}`).subscribe((response: any) => {
+      this.patient = response.patient;
+      this.patient['birthday'] = this.formatDate(this.patient.birthday)
     }); 
   }
-  
 
   saveData(){
     let actionUrl;
-    const data = {...this.user};
-    if(this.userId){
+    const data = {...this.patient};
+    if(this.patientId){
       delete data['id'];
-      delete data['user'];
+      delete data['patient'];
       delete data['pass'];
-      actionUrl = `${this.url}user-admin/${this.userId}/update`;
+      actionUrl = `${this.url}patient/${this.patientId}/update`;
     }else{
-      actionUrl = `${this.url}user-admin/create`;
+      actionUrl = `${this.url}patient/create`;
     }
   
     this.http.post(actionUrl, data).subscribe((response: any) => {

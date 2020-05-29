@@ -10,6 +10,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 
 import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
+import { PatientComponent } from '../../patient/patient.component';
 import { DeviceComponent } from '../../device/device.component';
 import { TablesComponent } from '../../tables/tables.component';
 import { TypographyComponent } from '../../typography/typography.component';
@@ -27,6 +28,7 @@ import { IconsComponent } from '../../icons/icons.component';
   declarations: [
     HomeComponent,
     UserComponent,
+    PatientComponent,
     DeviceComponent,
     TablesComponent,
     TypographyComponent,

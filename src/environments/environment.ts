@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://ce1891b8.ngrok.io',
+  apiUrl: 'https://1939f727af18.ngrok.io/',
 };

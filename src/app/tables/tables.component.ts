@@ -21,6 +21,10 @@ export class TablesComponent implements OnInit {
         headerRow: [ 'ID', 'Nombre', 'Identificador', 'Estado', 'Conexión'],
         dataRows: []
     }
+    private patientData: TableData = {
+        headerRow: [ 'ID', 'Nombre', 'Identificador', 'Estado', 'Conexión'],
+        dataRows: []
+    }
     private DeviceData: TableData = {
         headerRow: [ 'ID', 'Nombre', 'Identificador', 'Estado', 'Registro'],
         dataRows: []

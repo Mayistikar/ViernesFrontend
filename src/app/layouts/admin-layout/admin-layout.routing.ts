@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
+import { PatientComponent } from '../../patient/patient.component';
 import { DeviceComponent } from '../../device/device.component';
 import { TablesComponent } from '../../tables/tables.component';
 import { TypographyComponent } from '../../typography/typography.component';
@@ -11,6 +12,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
     { path: 'user/:id',       component: UserComponent },
     { path: 'user',           component: UserComponent },
+    { path: 'patient/:id',    component: PatientComponent },
+    { path: 'patient',        component: PatientComponent },
     { path: 'device/:id',     component: DeviceComponent },
     { path: 'device',         component: DeviceComponent },
     { path: 'table/:module',  component: TablesComponent },

@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { SalirComponent } from './salir/salir.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    SalirComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import { DeviceComponent } from '../../device/device.component';
 import { TablesComponent } from '../../tables/tables.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
+import { SalirComponent } from '../../salir/salir.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
@@ -19,4 +20,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'table/:module',  component: TablesComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
+    { path: 'salir',          component: SalirComponent },
 ];

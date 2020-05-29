@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { LegendItem, ChartType } from '../lbd/lbd-chart/lbd-chart.component';
 import * as Chartist from 'chartist';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -9,34 +10,65 @@ import * as Chartist from 'chartist';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    public emailChartType: ChartType;
-    public emailChartData: any;
-    public emailChartLegendItems: LegendItem[];
+  public emailChartType: ChartType;
+  public emailChartData: any;
+  public emailChartLegendItems: LegendItem[];
+  public hoursChartType: ChartType;
+  public hoursChartData: any;
+  public hoursChartOptions: any;
+  public hoursChartResponsive: any[];
+  public hoursChartLegendItems: LegendItem[];
+  public activityChartType: ChartType;
+  public activityChartData: any;
+  public activityChartOptions: any;
+  public activityChartResponsive: any[];
+  public activityChartLegendItems: LegendItem[];
+  private url: string;
 
-    public hoursChartType: ChartType;
-    public hoursChartData: any;
-    public hoursChartOptions: any;
-    public hoursChartResponsive: any[];
-    public hoursChartLegendItems: LegendItem[];
-
-    public activityChartType: ChartType;
-    public activityChartData: any;
-    public activityChartOptions: any;
-    public activityChartResponsive: any[];
-    public activityChartLegendItems: LegendItem[];
-  constructor() { }
+  constructor(private http: HttpClient) {
+    this.url = environment.apiUrl;
+    this.http.get(`${this.url}/logs/all-usages`).subscribe((response: any) => {
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+      console.log(response);
+      const { labels, series } = response.emailChartData;
+      console.log('labels', labels);
+      console.log('series', series);
+      this.emailChartData.labels = labels; // , series };
+      this.emailChartData.series = series;
+      this.emailChartLegendItems = response.emailChartLegendItems;
+  
+    });
+  }
 
   ngOnInit() {
       this.emailChartType = ChartType.Pie;
-      this.emailChartData = {
-        labels: ['62%', '32%', '6%'],
-        series: [62, 32, 6]
-      };
-      this.emailChartLegendItems = [
-        { title: 'Open', imageClass: 'fa fa-circle text-info' },
-        { title: 'Bounce', imageClass: 'fa fa-circle text-danger' },
-        { title: 'Unsubscribe', imageClass: 'fa fa-circle text-warning' }
-      ];
+
+      
+      // this.emailChartData = {
+      //   labels: ['62%', '32%', '6%'],
+      //   series: [62, 32, 6]
+      // };
+
+    //   this.emailChartData = {
+    //     "labels": [
+    //         "40%",
+    //         "25%",
+    //         "15%",
+    //         "5%"
+    //     ],
+    //     "series": [
+    //         40,
+    //         25,
+    //         15,
+    //         5
+    //     ]
+    // },
+
+    //   this.emailChartLegendItems = [
+    //     { title: 'Open', imageClass: 'fa fa-circle text-info' },
+    //     { title: 'Bounce', imageClass: 'fa fa-circle text-danger' },
+    //     { title: 'Unsubscribe', imageClass: 'fa fa-circle text-warning' }
+    //   ];
 
       this.hoursChartType = ChartType.Line;
       this.hoursChartData = {

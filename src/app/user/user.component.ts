@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-user',
@@ -17,7 +18,7 @@ export class UserComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, 
               private http: HttpClient) {
-    this.url = 'https://2af5b018.ngrok.io/';
+    this.url = environment.apiUrl;
     this.route.params.subscribe(params => {
       this.userId = params['id'];
       if(this.userId){

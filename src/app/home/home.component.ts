@@ -26,6 +26,10 @@ export class HomeComponent implements OnInit {
   private url: string;
 
   constructor(private http: HttpClient) {
+
+    const token = localStorage.getItem('token');
+    if(!token) window.location.href = '/#/';
+
     this.url = environment.apiUrl;
     this.http.get(`${this.url}/logs/all-usages`).subscribe((response: any) => {
       console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');

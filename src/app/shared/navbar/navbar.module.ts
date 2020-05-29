@@ -9,4 +9,9 @@ import { NavbarComponent } from './navbar.component';
     exports: [ NavbarComponent ]
 })
 
-export class NavbarModule {}
+export class NavbarModule {
+    constructor(){
+        const token = localStorage.getItem('token');
+        if(!token) window.location.href = '/#/';
+    }
+}

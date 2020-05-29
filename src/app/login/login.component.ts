@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.user.name = "Anderson";
-    this.user.pass = "1990";
+    this.user.pass = "";
   }
 
   onSumbit(){

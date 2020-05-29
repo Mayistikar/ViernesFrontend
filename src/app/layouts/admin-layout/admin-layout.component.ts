@@ -17,7 +17,10 @@ export class AdminLayoutComponent implements OnInit {
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
 
-  constructor( public location: Location, private router: Router) {}
+  constructor( public location: Location, private router: Router) {
+    const token = localStorage.getItem('token');
+    if(!token) window.location.href = '/#/';
+  }
 
   ngOnInit() {
     console.log(this.router)

@@ -14,6 +14,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/table/devices', title: 'Dispositivos',  icon:'pe-7s-note2', class: '' },
     { path: '/user', title: 'Usuarios', class: 'd-none' },
     { path: '/device', title: 'Dispositivos', class: 'd-none' },
+    { path: '/salir', title: 'Salir',  icon:'pe-7s-close-circle', class: '' },
 ];
 
 @Component({

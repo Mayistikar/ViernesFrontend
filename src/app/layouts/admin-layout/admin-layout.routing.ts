@@ -11,8 +11,8 @@ import { SalirComponent } from '../../salir/salir.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
-    { path: 'user-admin/:id',       component: UserAdminComponent },
-    { path: 'user-admin',           component: UserAdminComponent },
+    { path: 'user-admin/:id', component: UserAdminComponent },
+    { path: 'user-admin',     component: UserAdminComponent },
     { path: 'user/:id',       component: PatientComponent },
     { path: 'user',           component: PatientComponent },
     { path: 'device/:id',     component: DeviceComponent },

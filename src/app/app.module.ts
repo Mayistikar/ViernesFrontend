@@ -29,8 +29,7 @@ import { SalirComponent } from './salir/salir.component';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    NotificationsComponent,
-    SalirComponent
+    NotificationsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
